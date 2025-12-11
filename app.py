@@ -13,8 +13,8 @@ st.title("LangChain: Summarize Text From YT or Website")
 st.subheader("Summarize URL")
 
 # Sidebar: API Key
-with st.sidebar:
-    Groq_api_key = st.text_input("Groq API Key", value="", type="password")
+import streamlit as st
+Groq_api_key = st.secrets.get("GROQ_API_KEY", "")
 
 # URL input
 generic_url = st.text_input("URL", label_visibility="collapsed")
@@ -89,3 +89,4 @@ if st.button("Summarize the content from YT or Website"):
 
         except Exception as e:
             st.exception(e)
+
